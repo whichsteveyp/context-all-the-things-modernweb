@@ -12,9 +12,13 @@ class App extends Component {
           <p className="App-intro">Let's show off what we learned.</p>
         </div>
         <p>
-        <Localization messages={{ welcome: 'Welcome to Netflix'}}>
+        <Localization messages={{ welcome: 'Welcome to Netflix' }}>
           <span>
             <LocalizedButton message='welcome' />
+
+            <Localization messages={{ welcome: 'Welcome to Hulu, Shadowed Context Developer' }}>
+              <LocalizedButton message='welcome' />
+            </Localization>
           </span>
         </Localization>
         </p>

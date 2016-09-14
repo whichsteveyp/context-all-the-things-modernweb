@@ -4,8 +4,8 @@ import './LocalizedButton.css';
 const LocalizedButton = (props, context) => {
   const { message, values, onClick } = props;
 
-  return <button className='divSoup' onClick={props.onClick}>
-    {context.localize(props.message, props.values)}
+  return <button className='divSoup' onClick={onClick}>
+    {context.localize(message, values)}
   </button>;
 };
 
