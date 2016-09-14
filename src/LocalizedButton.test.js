@@ -1,19 +1,20 @@
+import Chai from 'chai';
+import getElementWithContext from 'react-test-context-provider'
+import LocalizedButton from './LocalizedButton';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-import LocalizedButton from './LocalizedButton';
-import Localization from 'react-localize';
-
-import Chai from 'chai';
 import Sinon from 'sinon';
 import SinonChai from 'sinon-chai';
 
 const { expect } = Chai;
 Chai.use(SinonChai);
 
-it('renders with the expected localized message', () => {
-  const output = ReactDOM.renderToString(<Localization messages={{ welcome: 'test: %s' }}>
-    <LocalizedButton message='welcome' values={['data']} />
-  </Localization>);
+it('should attempt to localize its message and values', () => {
+  const div = document.createElement('div');
+  const context = { localize: Sinon.spy() };
+  const element = getElementWithContext(context, <LocalizedButton message='welcome' values={['data']} />);
+  const output = ReactDOM.renderToString(element);
 
-  expect(output.indexOf('test: data')).to.not.equal(-1);
+  expect(context.localize).to.be.calledOnce;
+  expect(context.localize).to.be.calledWithExactly('welcome', ['data']);
 });
