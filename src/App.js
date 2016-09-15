@@ -31,7 +31,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <h2>Buttons Context Example</h2>
-          <p className="App-intro">Let's show off what we learned.</p>
+          <a href="https://github.com/sprjr/context-all-the-things-modernweb" className="App-intro">Repo on GitHub</a>
         </div>
         <p>
         <Localization messages={messages}>
